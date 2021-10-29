@@ -175,19 +175,20 @@
               </div>
               <br>
               <div class="form-row">
-                <div class="col-xs-12" style="width: 100%">
-                  <label for="up_fin_len_res">Final length</label>
-                  <input type="text" class="form-control" id="up_fin_len_res" value="" readonly>
-                  <div class="valid-feedback" id="up_valid_comment"></div>
-                  <div class="invalid-feedback" id="up_invalid_comment"></div>
-                </div>
+                <p>Match extender</p>
+                <ul id="up_res_invalid_ext" style="display: none;"><li id="up_res_invalid_ext_text"></li></ul>
+                <ol id="up_res_ext_list"></ol>
               </div>
               <br>
               <div class="form-row">
                 <div class="col-xs-12">
-                  <p>Match extender</p>
-                  <ul id="up_res_invalid_ext" style="display: none;"><li id="up_res_invalid_ext_text"></li></ul>
-                  <ol id="up_res_ext_list"></ol>
+
+                  <div class="col-xs-12" style="width: 100%">
+                    <label for="up_fin_len_res">Final length</label>
+                    <input type="text" class="form-control" id="up_fin_len_res" value="" readonly>
+                    <div class="valid-feedback" id="up_valid_comment"></div>
+                    <div class="invalid-feedback" id="up_invalid_comment"></div>
+                  </div>
                 </div>
               <br>
               </div>
@@ -266,12 +267,6 @@
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="./js/jquery-3.4.1.slim.min.js"></script>
-<script src="./js/popper.min.js"></script>
-<script src="./js/bootstrap.min.js"></script>
-<script src="./js/object.js"></script>
-<script src="./js/formula.js"></script>
-<script src="./js/form.js"></script>
 <script>
 var offline_mode = false
 if('serviceWorker' in navigator && offline_mode) {
@@ -287,5 +282,14 @@ if('serviceWorker' in navigator && offline_mode) {
   })
 }
 </script>
+
+<script src="./js/jquery-3.4.1.slim.min.js"></script>
+<script src="./js/popper.min.js"></script>
+<script src="./js/bootstrap.min.js"></script>
+<script src="./js/object.js"></script>
+<script src="./js/formula.js"></script>
+<script src="./js/form.js"></script>
+
+
 </body>
 </html>

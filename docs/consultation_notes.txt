@@ -1,0 +1,27 @@
+sheet stethoscope kosong
+tool sonicvision di table gada, tapi di sheet ada
+tool periscope 6 di table gada, tapi di sheet ada
+tool Digiscope di dokumen ada, tapi di sheet gak ada
+
+
+
+formula di sheet sonicvision tidak terbaca
+sheet optidrill tidak ada keterangan PIN / BOX
+di sheet optidrill ada keterangan "DMM 675" dan "DMM 900". apakah ini sama dengan sheet ARC ? yang terbagi menjadi 3 tool (ARC6, ARC8, ARC9)
+sheet microscope475 tidak ada keterangan PIN / BOX
+sheet periscope675 formula uphole tidak terbaca dan tidak ada keterangan PIN / BOX
+sheet periscope475 tidak ada keterangan PIN / BOX
+
+
+
+ini formulanya belum semua bro, tinggal nunggu tanggapan Bagoes. 
+
+
+adn4 tidak ada keterangan PIN/BOX
+
+
+
+view 0: downhole ada, uphole ada
+view 1: untuk impulse, pake HV, bukan ROP
+view 2: downhole doang
+view 3: uphole doang

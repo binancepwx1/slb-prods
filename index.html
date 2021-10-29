@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Extender Calculator">
+  <meta name="author" content="Ahmad Malhadi, Andreawan Bagoes">
+
+  <link rel="shortcut icon" href="./img/demo/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="./img/demo/apple-touch-icon.png" />
+  <link rel="apple-touch-icon" sizes="57x57" href="./img/demo/apple-touch-icon-57x57.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="./img/demo/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="76x76" href="./img/demo/apple-touch-icon-76x76.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="./img/demo/apple-touch-icon-114x114.png" />
+  <link rel="apple-touch-icon" sizes="120x120" href="./img/demo/apple-touch-icon-120x120.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="./img/demo/apple-touch-icon-144x144.png" />
+  <link rel="apple-touch-icon" sizes="152x152" href="./img/demo/apple-touch-icon-152x152.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="./img/demo/apple-touch-icon-180x180.png" />
+ 
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="./css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+  <title>Extender Type Calculator</title>
+</head>
+<body style="padding: 20px 0">
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top" style="background-color: #003365">
+    <a class="navbar-brand" href="./"><!-- <img src="./img/logo-white.png" style="width: 160px"> --></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#" onclick="resetSW()">Clear cache</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" onclick="resetForm()">Reset form</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+
+
+  <div class="container" style="margin-top: 80px;">
+    <div class="row">
+      <div class="col-md-12">
+        <center>
+          <h1 style="font-size: 24px; margin-bottom: 0px;"><b>Extender calculation apps</b></h1>
+          <!-- <h1 style="font-size: 26px; margin-bottom: 0px;"><b>Engineering Department</b></h1> -->
+          <!-- <p style="font-size: 19px; margin-top: 0px;" class="text-muted">Extender calculation apps</p> -->
+        </center>
+      </div>
+    </div>
+  </div>
+  <br><br>
+
+<!-- FORM ELEMENT -->
+  <div class="container" id="form_wrapper" style="display: block;">
+    <div class="row">
+      <div class="col-xs-0 offset-xs-0 col-sm-6 offset-sm-3" style="border: 0px solid red;">
+        <form id="calc_form">
+          <h4>Tool</h4>
+          <div class="form-group">
+            <label for="tool_selector">Name</label>
+            <select class="form-control" id="tool_selector" onchange="renderHole(this.options[this.selectedIndex])" required>
+              <option>-- Select tool --</option>
+            </select>
+          </div>
+          <br>
+          <div id="common_tool">
+            <div id="uphole">
+              <h4>Uphole</h4>
+              <div class="form-group">
+                <label for="up_rop2usc">ROP to shoulder collar</label>
+                <input class="form-control" type="number" id="up_rop2usc" placeholder="in inches, with dot">
+              </div>
+              <div class="form-group">
+                <label for="up_crossover">Crossover</label>
+                <input class="form-control" type="number" id="up_crossover" placeholder="in inches, with dot (optional)">
+              </div>
+              <div class="form-group">
+                <label for="up_connection">Connection</label>
+                <select class="form-control" id="up_connection">
+                  <option value="0">-- Select end --</option>
+                </select>
+              </div>
+            </div>
+            <br>
+            <div id="downhole">
+              <h4>Downhole</h4>
+              <div class="form-group">
+                <label for="down_rop2usc">ROP to shoulder collar</label>
+                <input class="form-control" type="number" id="down_rop2usc" placeholder="in inches, with dot">
+              </div>
+              <div class="form-group">
+                <label for="down_crossover">Crossover</label>
+                <input class="form-control" type="number" id="down_crossover" placeholder="in inches, with dot (optional)">
+              </div>
+              <div class="form-group">
+                <label for="down_connection">Connection</label>
+                <select class="form-control" id="down_connection">
+                  <option>-- Select end --</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Below is exception form tool -->
+          <div id="flex_form" style="display: none;">
+            <form>
+              <div>
+                <h4>Input</h4>
+                <div class="form-group">
+                  <label for="full_coll">Full collar length (Shoulder to shoulder)</label>
+                  <input class="form-control" type="number" id="full_coll" placeholder="in inches, with dot">
+                </div>
+                <div class="form-group">
+                  <label for="stepid">Uphole shoulder to End on Step ID</label>
+                  <input class="form-control" type="number" id="stepid" placeholder="in inches, with dot (optional)">
+                </div>
+              </div>
+            </form>
+          </div>
+
+
+
+
+          <br>
+          <div class="form-group">
+            <button class="form-control btn" style="background-color: #003365; color: #fff" type="button" onclick="doCalculate()" id="calc_btn" disabled>Calculate</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+<!-- BELOW IS RESULT ELEMENT -->
+
+  <div class="container" id="result_wrapper" style="display: none;">
+    <div class="row">
+      <div class="col-xs-0 offset-xs-0 col-sm-6 offset-sm-3" style="border: 0px solid red;">
+        <section>
+          <div>
+            <h4><b>Tool</b></h4>
+            <h5 id="res_tool_name"></h5>
+          </div>
+          <br>
+          <div id="res_uphole">
+            <h4><b>Uphole</b></h4>
+            <form>
+              <div class="form-row">
+                <div class="col-sm-12">
+                  <p style="margin-top: 20px">Details</p>
+                  <table class="table table-bordered table-sm" style="text-align: center">
+                    <thead>
+                      <tr>
+                        <th scope="col">Connection</th>
+                        <th scope="col" id="res_up_label_0">ROP</th>
+                        <th scope="col" id="res_up_label_1">Crossover</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><span id="up_res_conn"></span></td>
+                        <td><span id="up_res_rop2usc"></span> inch</td>
+                        <td><span id="up_res_crossover"></span> inch</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <p id="uphole_details_note" style="font-size: 13px;color: #006767;font-style: italic; display: none;">* Measurement taken from Extender base to end of wire tube, not the nose</p>
+                </div>
+              </div>
+              <br>
+              <div class="form-row">
+                <div class="col-xs-12" style="width: 100%">
+                  <label for="up_fin_len_res">Final length</label>
+                  <input type="text" class="form-control" id="up_fin_len_res" value="" readonly>
+                  <div class="valid-feedback" id="up_valid_comment"></div>
+                  <div class="invalid-feedback" id="up_invalid_comment"></div>
+                </div>
+              </div>
+              <br>
+              <div class="form-row">
+                <div class="col-xs-12">
+                  <p>Match extender</p>
+                  <ul id="up_res_invalid_ext" style="display: none;"><li id="up_res_invalid_ext_text"></li></ul>
+                  <ol id="up_res_ext_list"></ol>
+                </div>
+              <br>
+              </div>
+              <div class="form-row" id="up_linked_wrapper">
+                <div class="col-xs-12">
+                  <p>Available extender</p>
+                  <ol id="up_res_ext_list_linked"></ol>
+                </div>
+              </div>
+            </form>
+          <br><br>
+          </div>
+
+          <!-- Downhole result will be here -->
+          <div id="res_downhole">
+            <h4><b>Downhole</b></h4>
+            <form>
+              <div class="form-row">
+                <div class="col-sm-12">
+                  <p style="margin-top: 20px">Details</p>
+                  <table class="table table-bordered table-sm" style="text-align: center">
+                    <thead>
+                      <tr>
+                        <th scope="col">Connection</th>
+                        <th scope="col" id="res_down_label_0">ROP</th>
+                        <th scope="col" id="res_down_label_1">Crossover</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><span id="down_res_conn"></span></td>
+                        <td><span id="down_res_rop2usc"></span> inch</td>
+                        <td><span id="down_res_crossover"></span> inch</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <br>
+              <div class="form-row">
+                <div class="col-xs-12" style="width: 100%">
+                  <label for="down_fin_len_res">Final length</label>
+                  <input type="text" class="form-control" id="down_fin_len_res" value="" readonly>
+                  <div class="valid-feedback" id="down_valid_comment"></div>
+                  <div class="invalid-feedback" id="down_invalid_comment"></div>
+                </div>
+              </div>
+              <br>
+              <div class="form-row">
+                <div class="col-xs-12">
+                  <p>Match extender</p>
+                  <ul id="down_res_invalid_ext" style="display: none;"><li id="down_res_invalid_ext_text"></li></ul>
+                  <ol id="down_res_ext_list"></ol>
+                </div>
+              <br>
+              </div>
+              <div class="form-row" id="down_linked_wrapper">
+                <div class="col-xs-12">
+                  <p>Available extender</p>
+                  <ol id="down_res_ext_list_linked"></ol>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <br>
+          <div>
+            <button class="form-control btn" style="background-color: #003365; color: #fff" type="button" onclick="backAction()">Back</button>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="./js/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="./js/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="./js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script src="./js/object.js"></script>
+<script src="./js/formula.js"></script>
+<script src="./js/form.js"></script>
+<script>
+var offline_mode = false
+if('serviceWorker' in navigator && offline_mode) {
+  // This will triggered every time user refresh the page
+  // once registered, the list URL in sw.js cache.addAll
+  // will placed in local cache storage 
+  navigator.serviceWorker.register('./sw.js').then(function(registration) { 
+    console.log("Service Worker Registered") 
+  })
+
+  navigator.serviceWorker.ready.then(function(registration) {
+    console.log('Service Worker Ready')
+  })
+}
+</script>
+</body>
+</html>

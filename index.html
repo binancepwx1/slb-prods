@@ -3,6 +3,13 @@
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="./img/demo/apple-touch-icon-76x76.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="./img/demo/apple-touch-icon-114x114.png" />
+  <link rel="apple-touch-icon" sizes="120x120" href="./img/demo/apple-touch-icon-120x120.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="./img/demo/apple-touch-icon-144x144.png" />
+  <link rel="apple-touch-icon" sizes="152x152" href="./img/demo/apple-touch-icon-152x152.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="./img/demo/apple-touch-icon-180x180.png" />
+ 
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="Extender Calculator">
   <meta name="author" content="Ahmad Malhadi, Andreawan Bagoes">
@@ -11,13 +18,6 @@
   <link rel="apple-touch-icon" href="./img/demo/apple-touch-icon.png" />
   <link rel="apple-touch-icon" sizes="57x57" href="./img/demo/apple-touch-icon-57x57.png" />
   <link rel="apple-touch-icon" sizes="72x72" href="./img/demo/apple-touch-icon-72x72.png" />
-  <link rel="apple-touch-icon" sizes="76x76" href="./img/demo/apple-touch-icon-76x76.png" />
-  <link rel="apple-touch-icon" sizes="114x114" href="./img/demo/apple-touch-icon-114x114.png" />
-  <link rel="apple-touch-icon" sizes="120x120" href="./img/demo/apple-touch-icon-120x120.png" />
-  <link rel="apple-touch-icon" sizes="144x144" href="./img/demo/apple-touch-icon-144x144.png" />
-  <link rel="apple-touch-icon" sizes="152x152" href="./img/demo/apple-touch-icon-152x152.png" />
-  <link rel="apple-touch-icon" sizes="180x180" href="./img/demo/apple-touch-icon-180x180.png" />
- 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="./css/bootstrap.min.css">
 
@@ -59,16 +59,9 @@
 <!-- FORM ELEMENT -->
   <div class="container" id="form_wrapper" style="display: block;">
     <div class="row">
-      <div class="col-xs-0 offset-xs-0 col-sm-12" style="border: 0px solid red;">
+      <div class="col-xs-0 offset-xs-0 col-sm-12" style="border: 0px solid green;">
         <form id="calc_form">
           <h4>Tool</h4>
-          <div class="form-group">
-            <label for="tool_selector">Name</label>
-            <select class="form-control" id="tool_selector" onchange="renderHole(this.options[this.selectedIndex])" required>
-              <option>-- Select tool --</option>
-            </select>
-          </div>
-          <br>
           <div id="common_tool">
             <div id="uphole">
               <h4>Uphole</h4>
@@ -77,8 +70,12 @@
                 <input class="form-control" type="number" id="up_rop2usc" placeholder="in inches, with dot">
               </div>
               <div class="form-group">
-                <label for="up_crossover">Crossover</label>
-                <input class="form-control" type="number" id="up_crossover" placeholder="in inches, with dot (optional)">
+                <label for="down_crossover">Crossover</label>
+                <input class="form-control" type="number" id="down_crossover" placeholder="in inches, with dot (optional)">
+              </div>
+              <div class="form-group">
+                <label for="down_crossover">Length of wire</label>
+                <input class="form-control" type="number" id="down_crossover" placeholder="in inches, with dot (optional)">
               </div>
               <div class="form-group">
                 <label for="up_connection">Connection</label>
@@ -129,7 +126,7 @@
 
           <br>
           <div class="form-group">
-            <button class="form-control btn" style="background-color: #003365; color: #fff" type="button" onclick="doCalculate()" id="calc_btn" disabled>Calculate</button>
+            <button class="form-control btn" style="background-color: #8aa2ba; color: rgb(142, 142, 142)" type="button" onclick="doCalculate()" id="calc_btn" disabled>Calculate</button>
           </div>
         </form>
       </div>
@@ -146,13 +143,13 @@
             <h4><b>Tool</b></h4>
             <h5 id="res_tool_name"></h5>
           </div>
-          <br>
+         
           <div id="res_uphole">
             <h4><b>Uphole</b></h4>
             <form>
               <div class="form-row">
                 <div class="col-sm-12">
-                  <p style="margin-top: 20px">Details</p>
+                  <p style="margin-top: 20px">Detail</p>
                   <table class="table table-bordered table-sm" style="text-align: center">
                     <thead>
                       <tr>
@@ -174,19 +171,20 @@
               </div>
               <br>
               <div class="form-row">
-                <div class="col-xs-12" style="width: 100%">
-                  <label for="up_fin_len_res">Final length</label>
-                  <input type="text" class="form-control" id="up_fin_len_res" value="" readonly>
-                  <div class="valid-feedback" id="up_valid_comment"></div>
-                  <div class="invalid-feedback" id="up_invalid_comment"></div>
-                </div>
+                <p>Match extender</p>
+                <ul id="up_res_invalid_ext" style="display: none;"><li id="up_res_invalid_ext_text"></li></ul>
+                <ol id="up_res_ext_list"></ol>
               </div>
               <br>
               <div class="form-row">
                 <div class="col-xs-12">
-                  <p>Match extender</p>
-                  <ul id="up_res_invalid_ext" style="display: none;"><li id="up_res_invalid_ext_text"></li></ul>
-                  <ol id="up_res_ext_list"></ol>
+
+                  <div class="col-xs-12" style="width: 100%">
+                    <label for="up_fin_len_res">Final length</label>
+                    <input type="text" class="form-control" id="up_fin_len_res" value="" readonly>
+                    <div class="valid-feedback" id="up_valid_comment"></div>
+                    <div class="invalid-feedback" id="up_invalid_comment"></div>
+                  </div>
                 </div>
               <br>
               </div>
@@ -237,7 +235,7 @@
               <br>
               <div class="form-row">
                 <div class="col-xs-12">
-                  <p>Match extender</p>
+                  <p>Match ext</p>
                   <ul id="down_res_invalid_ext" style="display: none;"><li id="down_res_invalid_ext_text"></li></ul>
                   <ol id="down_res_ext_list"></ol>
                 </div>
@@ -245,7 +243,7 @@
               </div>
               <div class="form-row" id="down_linked_wrapper">
                 <div class="col-xs-12">
-                  <p>Available extender</p>
+                  <p>Available ext</p>
                   <ol id="down_res_ext_list_linked"></ol>
                 </div>
               </div>
@@ -265,12 +263,6 @@
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="./js/jquery-3.4.1.slim.min.js"></script>
-<script src="./js/popper.min.js"></script>
-<script src="./js/bootstrap.min.js"></script>
-<script src="./js/object.js"></script>
-<script src="./js/formula.js"></script>
-<script src="./js/form.js"></script>
 <script>
 var offline_mode = false
 if('serviceWorker' in navigator && offline_mode) {
@@ -286,5 +278,14 @@ if('serviceWorker' in navigator && offline_mode) {
   })
 }
 </script>
+
+<script src="./js/jquery-3.4.1.slim.min.js"></script>
+<script src="./js/popper.min.js"></script>
+<script src="./js/bootstrap.min.js"></script>
+<script src="./js/object.js"></script>
+<script src="./js/formula.js"></script>
+<script src="./js/form.js"></script>
+
+
 </body>
 </html>

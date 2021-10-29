@@ -10,13 +10,7 @@ self.addEventListener('install', (e) => {
        "./img/demo/apple-touch-icon.png",
        "./img/demo/apple-touch-icon-57x57.png",
        "./img/demo/apple-touch-icon-72x72.png",
-       "./img/demo/apple-touch-icon-76x76.png",
-       "./img/demo/apple-touch-icon-114x114.png",
-       "./img/demo/apple-touch-icon-120x120.png",
-       "./img/demo/apple-touch-icon-144x144.png",
-       "./img/demo/apple-touch-icon-152x152.png",
-       "./img/demo/apple-touch-icon-180x180.png",
-       
+       "./img/demo/apple-touch-icon-76x76.png",       
        "./css/bootstrap.min.css",
        "./js/jquery-3.4.1.slim.min.js",
        "./js/popper.min.js",
@@ -33,7 +27,7 @@ self.addEventListener('install', (e) => {
 self.addEventListener('fetch', (event) => {
   event.respondWith(
     caches.match(event.request).then((response) => {
-      console.log("getting from cache", event.request.url)
+      console.log("getting from cache real life ", event.request.url)
       return response || fetch(event.request)
     })
   )

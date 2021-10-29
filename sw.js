@@ -1,16 +1,3 @@
-
-
-self.addEventListener('fetch', (event) => {
-  event.respondWith(
-    caches.match(event.request).then((response) => {
-      console.log("getting from cache real life ", event.request.url)
-      return response || fetch(event.request)
-    })
-  )
-})
-
-
-
 self.addEventListener('install', (e) => {
   e.waitUntil(
     caches.open('calc_schlumberger').then((cache) => {
@@ -23,7 +10,6 @@ self.addEventListener('install', (e) => {
         "./img/demo/apple-touch-icon-57x57.png",
         "./img/demo/apple-touch-icon-72x72.png",
         "./img/demo/apple-touch-icon-76x76.png",       
-        "./css/bootstrap.min.css",
         "./js/object.js",
         "./js/formula.js",
         "./js/form.js",
@@ -32,3 +18,15 @@ self.addEventListener('install', (e) => {
     )
  })
  
+
+
+self.addEventListener('fetch', (event) => {
+  event.respondWith(
+    caches.match(event.request).then((response) => {
+      console.log("getting from cache real life ", event.request.url)
+      return response || fetch(event.request)
+    })
+  )
+})
+
+

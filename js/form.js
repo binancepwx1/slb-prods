@@ -1,4 +1,4 @@
-function renderTool() {
+const renderTool = () => {
 	for (var i = 0; i < DATASET.tool.length; i++) {
 		var option = document.createElement("option")
 		option.text = DATASET.tool[i].name
@@ -10,7 +10,7 @@ function renderTool() {
 }
 renderTool()
 
-function renderUpholePin() {
+const renderUpholePin = () => {
 	var option = document.createElement("option")
 	option.text = "PIN"
 	option.value = "pin"
@@ -18,7 +18,7 @@ function renderUpholePin() {
 	document.getElementById("up_connection").appendChild(option)
 }
 
-function renderUpholeBox() {
+const renderUpholeBox = () => {
 	var option = document.createElement("option")
 	option.text = "BOX"
 	option.value = "box"
@@ -26,7 +26,7 @@ function renderUpholeBox() {
 	document.getElementById("up_connection").appendChild(option)
 }
 
-function renderDownholePin() {
+const renderDownholePin = () => {
 	var option = document.createElement("option")
 	option.text = "PIN"
 	option.value = "pin"
@@ -34,7 +34,7 @@ function renderDownholePin() {
 	document.getElementById("down_connection").appendChild(option)
 }
 
-function renderDownholeBox() {
+const renderDownholeBox = () => {
 	var option = document.createElement("option")
 	option.text = "BOX"
 	option.value = "box"
@@ -42,7 +42,7 @@ function renderDownholeBox() {
 	document.getElementById("down_connection").appendChild(option)
 }
 
-function getParamFromFun(func) {
+const getParamFromFun = (func) => {
 	var STRIP_COMMENTS = /((\/\/.*$)|(\/\*[\s\S]*?\*\/))/mg
 	var ARGUMENT_NAMES = /([^\s,]+)/g
 	var fnStr = func.toString().replace(STRIP_COMMENTS, '')
@@ -52,7 +52,7 @@ function getParamFromFun(func) {
 	return result
 }
 
-function renderHole(elem) {
+const renderHole = (elem) =>  {
 	var tool_view = parseInt(elem.getAttribute("view"))
 	var tool_id = parseInt(elem.getAttribute("value"))
 	document.getElementById("calc_btn").disabled = false
@@ -74,7 +74,7 @@ function renderHole(elem) {
 }
 
 
-function flex_render(tool_view, tool_id) {	
+const flex_render = (tool_view, tool_id) => {	
 	// set label in the form
 	var tool_data = DATASET.tool.find(el => el.id === tool_id)
 	document.querySelectorAll('[for=up_rop2usc]')[0].innerHTML = tool_data.label_form.uphole[0]
@@ -85,7 +85,7 @@ function flex_render(tool_view, tool_id) {
 }
 
 
-function common_render(tool_view, tool_id) {
+const common_render = (tool_view, tool_id) =>  {
 	if (tool_view == 2) {
 		document.getElementById("uphole").style.display = "none"
 		document.getElementById("downhole").style.display = "block"
@@ -146,13 +146,13 @@ function common_render(tool_view, tool_id) {
 	}
 }
 
-function backAction() {
+const backAction = () => {
 	// document.getElementById("calc_form").reset()
 	document.getElementById("form_wrapper").style.display = "block"
 	document.getElementById("result_wrapper").style.display = "none"
 }
 
-function doCalculate() {
+const doCalculate = () => {
 	var req = {
 	    "id_tool": null,
 	    "hole": {
@@ -237,7 +237,7 @@ function doCalculate() {
 }
 
 
-function renderResultUphole(req, res_uphole) {
+const renderResultUphole = (req, res_uphole) => {
 	// Set tool name in result header
 	document.getElementById("res_tool_name").innerHTML = DATASET.tool.find(el => el.id === req.id_tool).name
 
@@ -365,7 +365,7 @@ function renderResultUphole(req, res_uphole) {
 }
 
 
-function renderResultDownhole(req, res_downhole) {
+const renderResultDownhole = (req, res_downhole) => {
 	// Set tool name in result header
 	document.getElementById("res_tool_name").innerHTML = DATASET.tool.find(el => el.id === req.id_tool).name
 
@@ -492,7 +492,7 @@ function renderResultDownhole(req, res_downhole) {
 // So consider this when you are in offshore rig
 // or isolated places that dont have an internet connection
 
-function resetSW() {
+const resetSW = () => {
 	alert("This will delete local app data. Don't do this if you are in offshore rig or if you don't have an internet connection.")
 	var user_resp = confirm("Are you want to delete ?")
 	if (!user_resp) {
@@ -513,6 +513,6 @@ function resetSW() {
 }
 
 
-function resetForm() {
+const resetForm = () => {
 	document.getElementById("calc_form").reset()
 }
